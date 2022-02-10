@@ -1,10 +1,14 @@
 // load express
 const express = require ("express");
-const { toNamespacedPath } = require("path/posix");
+
 
 
 // create our express app
 const app = express ();
+
+// importing randomExpress function 
+const randomExpress = require ("./random-expression");
+
 
 //=======> making routes <=========\\
 
@@ -26,6 +30,12 @@ app.get ("/greeting/:name" , (req,res) => {
 
 app.get ("/tip/:total/:tipPercentage", (req,res) => {
     res.send (`<h1>You gave the custumor ${req.params.total * req.params.tipPercentage /100} dollars</h1>`)
+})
+
+app.get ("/magic/:question", (req,res) => {
+    if (req.params.question === "Will I be a Millionaire" ) {
+        res.send (`<h1> Question : Will I be a Millionaire ? <h1> <br> Answer : ${randomExpress()}` );
+    }
 })
 
 
