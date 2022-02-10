@@ -1,7 +1,7 @@
 // load express
 const express = require ("express");
 const { toNamespacedPath } = require("path/posix");
-const { URLSearchParams, fileURLToPath } = require("url");
+
 
 // create our express app
 const app = express ();
@@ -22,6 +22,10 @@ app.get ("/greeting" , (req,res) => {
 // add name 
 app.get ("/greeting/:name" , (req,res) => {
     res.send (`<h1>Wow! Hello there,   ${req.params.name} </h1>`);
+})
+
+app.get ("/tip/:total/:tipPercentage", (req,res) => {
+    res.send (`<h1>You gave the custumor ${req.params.total * req.params.tipPercentage /100} dollars</h1>`)
 })
 
 
