@@ -1,5 +1,9 @@
 // load express
 const express = require ("express");
+const fibonacci = require ("./fibonacci") ; 
+
+
+
 
 
 
@@ -40,8 +44,22 @@ app.get ("/magic/:question", (req,res) => {
 
 
 
+// console.log (fibonacci (14));
+
+app.get ( "/fibonacci/:targetNumber" , (req,res) => { 
+    if ( fibonacci (parseInt(req.params.targetNumber))  === false ) {
+        res.send (`<h1>I can tell this is not a fibonacci number</h1>`) 
+    }else { 
+        res.send (`<h1>Very good. It is Fibonacci</h1>`);
+    }
+})
+
+
+
 
 // local hosting 
+
+
 app.listen (3000 , () => {
     console.log ("listening on port 3000")
 })
